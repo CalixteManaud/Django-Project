@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inscription{% endblock %}
+
+
+<!-- registration.html -->
+{% block body %}
+    <style>
+        body {
+            background-image: url("{% static "image/body_2.jpg" %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <div class="container my-5 shadow p-5 bg-white rounded">
+        <h1 class="text-center my-5" style="background-color: #c1cbce">Inscription</h1>
+        <form action="{% url 'registration' %}" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisateur">
+                <div class="invalid-feedback">
+                    {% if form.username.errors %}
+                        {% for error in form.username.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        <br>
+
+
+            <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                <div class="invalid-feedback">
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        <br>
+            <div class="form-group">
+                <label for="password">Mot de passe :</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
+                <div class="invalid-feedback">
+                    {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        <br>
+            <div class="form-group">
+                <label for="date_of_birth">Date de naissance :</label>
+                <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" placeholder="Date de naissance">
+                <div class="invalid-feedback">
+                    {% if form.date_of_birth.errors %}
+                        {% for error in form.date_of_birth.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        <br>
+
+            <div class="form-group">
+                <label for="competitions">Compétitions :</label>
+                <select class="form-control" id="competitions" name="competitions">
+                    <option value="1">Football <i class='bx bx-football'></i></option>
+                    <option value="2">Basket <i class='bx bx-basketball' ></i></option>
+                    <option value="3">NFL <i class='bx bx-basketball' ></i></option>
+                </select>
+                <div class="invalid-feedback">
+                    {% if form.competition_category.errors %}
+                        {% for error in form.competition_category.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        <br>
+            <br>
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+        </form>
+    </div>
+
+{% endblock %}

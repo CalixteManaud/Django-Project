@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}{{ product_objet.titre }}{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            background-image: url("{% static "image/back.jpg" %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <br>
+    <div class="row mx-auto">
+        <div class="col-md-6">
+            <div>
+                <img src="{{ product_objet.image }}" width="500px" height="500px" alt="test">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-warning display-3">
+                {{ product_objet.titre }}
+            </div>
+            <div class="text-danger ">
+               Prix:  $ {{ product_objet.price }}
+            </div>
+            <div>
+                {{ product_objet.description }}
+            </div>
+            <a href="#"><button class="btn btn-success">Acheter</button></a>
+        </div>
+    </div>
+
+{% endblock %}

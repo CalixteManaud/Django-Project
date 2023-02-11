@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block body %}
+    <style>
+    .card {
+        transition: transform .5s;
+    }
+    .card:hover {
+        transform: scale(1.05);
+    }
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+    body {
+        background-image: url("{% static "image/body.png" %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    </style>
+    <div class="jumbotron jumbotron-fluid bg-light shadow">
+      <div class="container">
+        <h1 class="display-4">Bienvenue sur mon site</h1>
+        <p class="lead">
+          Ce site a été créé pour vous montrer comment utiliser Bootstrap 5 pour créer des pages web modernes et attrayantes.
+        </p>
+      </div>
+    </div>
+
+    <div class="container-fluid my-5">
+      <div class="row">
+
+        <div class="col-md-4">
+          <div class="card shadow">
+            <img src="{% static "image/Basket.jpg" %}" class="card-img-top" alt="Basket" />
+            <div class="card-body">
+              <h5 class="card-title">Compétition : Basket</h5>
+              <p class="card-text">
+                Envie de jouer au basket ? Venez découvrir les produits de basket de notre site
+              </p>
+                <a href="{% url "competition" %}" class="btn btn-primary">En savoir plus</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card shadow">
+            <img src="{% static "image/football.jpg" %}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Compétition : Football</h5>
+              <p class="card-text">
+                Evitez les blessures en jouant au football avec les produits de notre site
+              </p>
+                <a href="{% url "competitionfootball" %}" class="btn btn-primary">En savoir plus</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card shadow">
+            <img src="{% static "image/nfl.jpg" %}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Compétition : NFL</h5>
+              <p class="card-text">
+                Pour les fans de football américain, venez découvrir les produits de notre site
+              </p>
+                <a href="{% url "competitionnfl" %}" class="btn btn-primary">En savoir plus</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
