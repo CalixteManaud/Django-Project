@@ -15,7 +15,7 @@
     </style>
     <div class="container my-5 shadow p-5 bg-white rounded">
         <h1 class="text-center my-5" style="background-color: #c1cbce">Inscription</h1>
-        <form action="{% url 'registration' %}" method="post">
+        <form action="{% url 'index' %}" method="post">
             {% csrf_token %}
 
             <div class="form-group">

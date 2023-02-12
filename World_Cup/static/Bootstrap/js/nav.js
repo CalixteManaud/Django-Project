@@ -6,3 +6,4 @@
         $('.dropdown-menu').mouseleave(function() {
             $(this).slideToggle(300, "linear");});
         });
+

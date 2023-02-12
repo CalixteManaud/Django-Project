@@ -2,7 +2,6 @@ from django.shortcuts import render
 from World_Cup.models.AllsProducts import Product
 from django.core.paginator import Paginator
 
-
 def competition_view(request):
     product_objet = Product.objects.all()
     item_name = request.GET.get('item-name')
@@ -14,4 +13,3 @@ def competition_view(request):
     product_objet = paginator.get_page(page)
 
     return render(request, 'competition.html', {'product_objet': product_objet})
-
