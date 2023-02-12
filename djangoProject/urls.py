@@ -16,31 +16,28 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from World_Cup.views.Registration_view import registration_request, login_request, logout_request
-from World_Cup.views.compétition_view import competition_view
-from World_Cup.views.competitionfoot_view import competitionfoot_view
-from World_Cup.views.checkout import checkout
-from World_Cup.views.detail import detail, detailfoot, detailnfl
-from World_Cup.views.index_view import index
+from World_Cup.views.Registration_view import LogoutView, LoginView, RegistrationView
+from World_Cup.views.compétition_view import CompetitionView
+from World_Cup.views.competitionfoot_view import CompetitionFootView
+from World_Cup.views.checkout import CheckoutView
+from World_Cup.views.detail import DetailViewProduct, DetailViewProductFoot, DetailViewProductNFL
+from World_Cup.views.index_view import IndexView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.contrib.auth.decorators import login_required
-from django.views.generic import TemplateView
-from World_Cup.views.competitionnfl_view import competitionnfl_view
+from World_Cup.views.competitionnfl_view import CompetitionNFLView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('Registration/', registration_request, name='registration'),
-    path('Competition/', competition_view, name='competition'),
-    path('Competition/<int:myid>', detail, name='detail'),
-    path('Competitionfootball/', competitionfoot_view, name='competitionfootball'),
-    path('Competitionfootball/<int:myid>', detailfoot, name='detail'),
-    path('Competitionnfl/', competitionnfl_view, name='competitionnfl'),
-    path('Competitionnfl/<int:myid>', detailnfl, name='detail'),
-    path('message/', login_required(TemplateView.as_view(template_name='connect.html')), name='message'),
-    path('checkout/', checkout, name='checkout'),
-    path('login/', login_request, name='login'),
-    path('logout/', logout_request, name='logout'),
+    path('', IndexView.as_view(), name='index'),
+    path('Registration/', RegistrationView.as_view(), name='registration'),
+    path('Competition', CompetitionView.as_view(), name='competition'),
+    path('Competition/<int:pk>', DetailViewProduct.as_view(), name='detail_product'),
+    path('Competitionfootball', CompetitionFootView.as_view(), name='competitionfootball'),
+    path('Competitionfootball/<int:pk>', DetailViewProductFoot.as_view(), name='detail_foot'),
+    path('Competitionnfl/', CompetitionNFLView.as_view(), name='competitionnfl'),
+    path('Competitionnfl/<int:pk>', DetailViewProductNFL.as_view(), name='detail_nfl'),
+    path('checkout/', CheckoutView, name='checkout'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

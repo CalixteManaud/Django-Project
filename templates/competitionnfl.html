@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <h5 id="aa{{ product.id }}" class="card-title">{{ product.titre }}</h5>
                         <p id="price{{ product.id }}" style="color:orange" class="card-text"> {{ product.price }} €</p>
-                        <a href="{{ product.id }}" class="btn btn-danger">Voir</a>
+                        <a href="{% url "detail_nfl" product.id %}" class="btn btn-danger">Voir</a>
                         <button id="{{ product.id }}" class="btn btn-success">Ajouter</button>
                     </div>
                 </div>
